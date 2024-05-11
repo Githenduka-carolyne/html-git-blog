@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logo.png">
+    <title>Everyday Git.</title>
+</head>
+<body>
+    <h1>Getting started with Git.</h1>
+    <h2>What is Git?</h2>
+    <p>
+        Git is a <b>version control system.</b>
+        A version control system is a software tool that helps to <b>track and manage changes to files,
+        code, documents, and <br> any other types of digital content over time.</b>
+        In software engineering, git helps us to keep track of changes to code.
+        It is also used to collaborate in code by<br> several software engineers.
+        Git was developed by Linus Torvalds<i>(Creator of Linux).</i>
+        Git is not the only type of Version Control System, other examples include<br>
+        CVS, Subversion or Perforce but for now try and forget about them, this will help you 
+        avoid subtle confusion when using the tool. Understanding the fundamentals<br> of how Git works
+        makes it easier for a beginner to work with git effectively cause today our focus is on Git and Github.</p>
+    <h2>Installing Git.</h2>
+    <p> Your operating system does not come with git installed by default <i>(especially windows operating system).</i>
+        To check if you have git installed in your machine or not:
+        <ul>
+            <li>Open the command prompt in windows or terminal in linux/macos.</li>
+            <li>Type the command git --version.</li>
+            <li>Press Enter.</li>
+        </ul>
+        If you have git installed, you should see something like: <b>git version 2.30.2.windows.1</b>.
+        <figure>
+            <img src="Images/git-version.png" alt="picture of how a git version should appear" width="400">
+            <figcaption>Example of git version installed</figcaption>
+        </figure>
+
+        If not, then you will see an error message that the command is not recognized.
+        <figure>
+            <img src="Images/git-version-unavailable.png" alt="picture of how no git version installed" width="400">
+            <figcaption>No git version installed</figcaption>
+        </figure> 
+
+        If you don't have git installed, head over to <a href="https://www.git-scm.com/ " target="_blank">https://www.git-scm.com/</a>
+        and download git from there.
+        You will be able to see the latest version of git available.<br> Click the download buttton for your specific operating system
+        (macos or windows) for git to be downloaded.
+        Wait for the downloading process to end and setup git<br> into your machine. 
+        <figure>
+            <img src="Images/git-download.png" alt="picture of where to click to download git" width="400">
+            <figcaption>Click <b>download</b></figcaption>
+        </figure>
+    </p>
+    <h2>Configuring Git.</h2>
+    <p>Now that the downloading and installation process is complete,
+       the next procedure is to configure your git.
+       Let Git know who you are. This is an important step after <br>installing git as each git commit uses this information.
+       To let git know who you are, you pass in the username and email address.
+       <ul>
+        <li>To configure your username:<b>git config --global user.name “your username”</b></li>
+        <li>To configure your email address: <b>git config --global user.email “your email address”</b></li>
+       </ul>
+       
+       Best advise is to use your github email address or if you don't have a github account,
+       use an email address that you will use to sign up for github.
+
+       <figure>
+        <img src="Images/configuration.png" alt="code for configuring git using email and username" width="450">
+        <figcaption>Email and Username configuration</figcaption>
+       </figure>
+
+    </p>
+    <h2>Intializing a Git repository</h2>
+    <p><b>Git repository-</b> It is a central storage location for managing and tracking changes in files
+        and directories.<br>Checking if a project contains a git repository is very important to avoid reinitializing a git repository 
+        where there is already one which is a bad practice in git.<br>
+        <ul>
+            <li>To check if the project contains a git repository, 
+                run the command <b>git status.</b></li>
+            <li>If the project <b>does not</b> contain a git repository, you will get the message <b>“fatal not a git repository…”</b> </li>
+            <li>Any other message means that the project contains a git repository.</li>  
+            <li>If the project/folder does not contain a git repository, you can initialize/create a repository using the command <b>git init</b></li>
+            <li>If a repository is <b>initialized successfully</b>, you will see the text <b>“Initialized an empty git repository in…”</b></li>      
+            </ul>
+        <figure>
+                <img src="Images/init-status.png" alt="codes of checking and creating repository" width="600">
+                <figcaption>Checking and creating repository </figcaption>
+        </figure>
+    </p>
+    <h2>Adding files to the staging area</h2> 
+    <p>After creating a repository it appears empty.Next  step is to create a file inside the folder where you initialized git.
+        Use the command <b>git status</b> to<br> verify that the file is part of the repo.<br>
+        You will see your file under untracked files.
+        This means that Git is aware of the file but it has not added it to our repository.<br>
+        Files in your github repository can be in one of the two states:<b>tracked or untracked.</b>
+        <ul>
+            <li><b>Tracked files:</b>Are files that git knows about and are added to the repository.</li>
+            <li><b>Untracked files:</b>These files are in our working directory and git knows about them but have not been added to the repository.</li>
+        </ul>
+        In the example below, after creating a file and checking if it is part of the repository by using git status, 
+        we see that dealership file is untracked.
+
+        <figure>
+            <img src="Images/tracked-untracked.png" alt="picture of untracked file" width="500">
+            <figcaption>Example of untracked file </figcaption>
+        </figure>
+        <h3>Staging Environment/Area</h3>
+        Now that we have an instance of untracked file, we have to add it into the repository.
+        This is done through the Staging Environment/Area.<br>
+        <b>A Staging Environment/Area</b> is an area where changes to files are prepared before they are committed to repository.
+        <ul>
+        <li>To add a file to the staging environment, use <b>git add filename.</b></li>
+        <li>If you have more than one file, you can specify those files:<b>git add file1 file2 file3</b></li>
+        <li>If you want to add all the files in the project, instead of specifying those files, use a period symbol;<b> git add .</b></li>
+        <li>You can also use <b>git add --all</b> to add all the files.</li>
+        <li>The shortcut for git add --all is <b>git add -A</b></li>
+        </ul>
+        <figure>
+            <img src="Images/added-file.png" alt="picture of added file" width="600">
+            <figcaption>Untracked file added to the repo </figcaption>
+        </figure>
+    </p>    
+    <h2>Commiting changes</h2>
+    <p>
+        <b>A commit in git</b> is a snapshot of changes made to a repository at a particular point in time.
+        Adding commits keeps track of progress and changes as we work.<br>
+        Git considers each commit change point, it is a point we can go back to in our project 
+        if we find a bug or we want to make a change.<br>
+        We use <b>git commit -m “commit message” </b> to commit changes to our repository.
+        <ul>
+            <li>The <b>commit</b> performs a commit</li>
+            <li>The <b>-m “message” </b>adds a message.</li>
+        </ul>
+        Another option to view past commits is by using the <b>git log</b> command.
+        We can also use <b>git log --oneline</b> if we want a bit more compressed output of git log.
+        <figure>
+            <img src="Images/committed file.png" alt="picture of committed file" width="600">
+            <figcaption>Committed file that was added to the repo </figcaption>
+        </figure>
+    </p>
+    <h2>Branches</h2>
+    <p><b>A branch</b> is a new or separate version of the main repository.
+        Branches allows multiple developers to;
+        <ul>
+            <li>Work on different features.</li>
+            <li>Fix bugs.</li>
+            <li>Experiment simultaneously without interfering with each other's work.</li>
+        </ul>
+        <h3>Creating a branch</h3>
+        <p>To create branch, we use the command <b>git branch new-branch-name</b>
+                
+            <figure>
+                <img src="Images/creating a new branch.png" alt="picture of new branch created" width="600">
+                <figcaption>New branch created</figcaption>
+            </figure>
+        </p>
+
+        <h3> Viewing all branches</h3>
+        <p>We can then view all the branches we have using the command <b>git branch</b>
+
+            <figure>
+                <img src="Images/branches available.png" alt="picture of all branches available" width="600">
+                <figcaption>All branches available</figcaption>
+            </figure>
+        </p>
+
+        <h3>Switching active branches</h3>
+        <p>The branch with a * symbol to its left is the <b>active branch/the branch we are in</b>
+         <br>We can change branches using the command<b> git checkout branch-name</b>
+
+            <figure>
+                <img src="Images/switching branch.png" alt="picture of branch switched" width="600">
+                <figcaption>Branch switched from the main branch </figcaption>
+            </figure>
+        </p>   
+
+        <h3>Merging a branch</h3>
+        <p>Once you finish working in your branch and you are comfortable that is what you want,
+            we merge this branch to the master branch/ the main branch.<br>
+            The master branch typically contains the latest version of the codebase.
+            It is here where all finished and tested features are integrated.
+            To merge a branch;
+            <ul>
+                <li>Add all the changes made in that branch to the staging area, then commit those changes.</li>
+                <li>Move to your master/main branch/the branch you want to merge this branch with.</li>
+                <li>Then use the command <b>git merge branch-name</b> to merge that branch.</li>
+                <li>If we want/and are sure, we can then delete that branch using the command <b>git branch –d branch-name</b></li>
+            </ul>
+            <figure>
+                <img src="Images/merged branch.png" alt="picture of merged branches" width="600">
+                <figcaption>Merged branch</figcaption>
+            </figure>
+        </p>
+
+        <h3>Deleting a branch</h3>
+        <p>You can delete a branch using the command <b>git branch -D branch-name</b>
+
+            <figure>
+                <img src="Images/deleted branch.png" alt="picture of deleted branch" width="600">
+                <figcaption>Deleted branch</figcaption>
+            </figure>
+        </p>
+    <p>
+    <h2>The Next step</h2>
+    <p>After trying all the above, I would recommend Git users to also interact with Github.<br>
+        <b>Github</b> is a web based platform for hosting and collaborating on Git repositories.
+        Github allows users to;
+        <ul> 
+            <li>Host Git repositories on it's platform</li>
+            <li>Store their codes on github</li> 
+            <li>Collaborate with other developers from all over the world.</li>
+        </ul> 
+        You can sign up for a free personal github account at <a href="https://github.com/" target="_blank"> https://github.com/</a>.
+        All you need is an <b>email address.</b><br>
+    Other recommendation include;
+    <ul>
+        <li>How to pull requests</li>
+        <li>How to push request</li>
+        <li>Git commands </li> 
+    </ul>
+    Once you have all this in your finger tips you are good to go. All you need is to keep practicing
+    to ensure you not only prevent yourself from forgetting<br> what you have learnt but also be able to learn new techniques you can apply
+    in the long run.<br>
+    I hope this has helped you and given you a glimpse of what git and github is and how to navigate through it.
+    </p>
+
+
+
+       
+</body>
+</html>
